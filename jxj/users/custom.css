@@ -1,0 +1,63 @@
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar {
+   -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+   -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+   box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+/* www.cssmatic.com/box-shadow */  
+}
+.navbar-form {
+  margin-top: 12px;
+}
+.jumbotron { 
+  background-color: #000d7d;
+  color: #ffffff;
+  background-color: #ffffff;
+  color: #000d7d;
+  margin-bottom: 0;
+}
+.table td {
+   text-align: center;   
+   vertical-align: middle;
+}
+.table tr {
+   text-align: center;   
+   vertical-align: middle;
+}
+.table th {
+   text-align: center;   
+   vertical-align: middle;
+}
+.table {
+  border: 0.5px solid #000000;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 0.5px solid #000000;
+}
+.box-shadow {
+   -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+   -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+   box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+}
+.panel {
+  border: 1.5px solid #000000;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus{
+  outline: none;
+}
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #000d7d;
+}
+nav .glyphicon {
+    color: #0099ff;
+}
