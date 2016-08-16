@@ -16,13 +16,8 @@ if (($handle = fopen("ifactor.csv", "r")) !== FALSE) {
   }
   fclose($handle);
 }
-$sql = "SET @count=0";
-$result=mysql_query($sql);
-$sql = "UPDATE impact SET impact.id=@count:=@count+1";
-$result=mysql_query($sql);
 
-
-$myfile=fopen("journals.json","w");
+$myfile=fopen("../users/journals.json","w");
 $sql = "SELECT journal FROM impact"; 
 $res=mysql_query($sql);
 $rows=array();

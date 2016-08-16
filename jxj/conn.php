@@ -13,7 +13,7 @@ if(!$db_selected) {
   $sql="CREATE DATABASE $dbname";
   if(mysql_query($sql,$con)){
     echo "Database $dbname created successfully\n";
-    $db_selected=mysql_select_db($dbname,$conn);
+    $db_selected=mysql_select_db($dbname,$con);
 /////////////////// create table
 $sql = "CREATE TABLE IF NOT EXISTS admin (
 id        INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

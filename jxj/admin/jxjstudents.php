@@ -11,7 +11,7 @@
   <script src="../jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/details.js"></script>
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/custom2.css">
 </head>
 <body>
 <?php
@@ -21,10 +21,11 @@
   $res=mysql_query($sql);
   $np = 0;
   $ap = array(); // students
-  echo "<div class='div1 container-fluid box-shadow'>";
+  echo "<div class='div2 container-fluid box-shadow'>";
   echo "<table class='table table-bordered table-striped table-condensed table-hover'>";
-  echo "<td colspan=11><span class='rowTitle'>获奖名单：{$award}</span>";
-      echo "</tr>";
+  echo "<tr style='background: #dcf0d6;'>";
+  echo "<td colspan=11><span style='font-size: 20px;'>获奖名单：{$award}</span>";
+  echo "</tr>";
       echo "<tr>";
       echo "<td>编号</td>";
       echo "<td>姓名</td>";
