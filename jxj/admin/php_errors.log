@@ -1,0 +1,2 @@
+[16-Aug-2016 21:56:17 Asia/Shanghai] PHP Warning:  file_get_contents(JXJKind.json): failed to open stream: No such file or directory in C:\Apache24\htdocs\jxj\admin\upJXJRelModal.php on line 19
+[16-Aug-2016 21:56:32 Asia/Shanghai] PHP Warning:  file_get_contents(JXJKind.json): failed to open stream: No such file or directory in C:\Apache24\htdocs\jxj\admin\upJXJRelModal.php on line 19
