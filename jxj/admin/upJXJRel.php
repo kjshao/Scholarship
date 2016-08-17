@@ -1,20 +1,18 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+	header('Content-Type:text/html; charset=utf-8');
+	echo "错误!没有权限!";
+	exit(0);
+}
 include('../conn.php');
 
-//for($i=0; $i<=$_POST["ntotal"]; $i++){
-//  $name = "ax".$i;
-//  $idx = "id".$i;
-//  $tmp = $_POST[$name];
-//  $id = $_POST[$idx];
-//  $sql = "UPDATE jxjkind0 SET jxjid='{$tmp}' WHERE id='{$id}'";
-//  $res=mysql_query($sql);
-//}
-$file="JXJKind.json";
+$file="../json/JXJKind.json";
 //$infile = json_decode($_POST["pass"]);
 $infile = ($_POST["pass"]);
 file_put_contents($file,$infile);
 
-$file="JXJKindx.json";
+$file="../json/JXJKindx.json";
 //$infile = json_decode($_POST["pass"]);
 $infile = ($_POST["passx"]);
 file_put_contents($file,$infile);

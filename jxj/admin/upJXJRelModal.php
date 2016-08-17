@@ -16,7 +16,7 @@
         $ntotal++;
         $jxjkinds[$ntotal]=$row[1];
       }
-      $res=file_get_contents("JXJKind.json","r");
+      $res=file_get_contents("../json/JXJKind.json","r");
       $jxjs=json_decode($res,true);
       $ntotaly=sizeof($jxjs);
       echo "<p style='display:none' id='nkindsx'>$ntotal</p>";

@@ -38,7 +38,7 @@ for ($i = 1; $i <= $highestRow; $i++){
   $res=mysql_query($sql);
 }
 
-$myfile=fopen("../users/journals.json","w");
+$myfile=fopen("../json/journals.json","w");
 $sql = "SELECT journal FROM impact"; 
 $res=mysql_query($sql);
 $rows=array();

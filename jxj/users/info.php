@@ -1,5 +1,5 @@
 <?php
-  $res=file_get_contents("../admin/JXJKindx.json","r");
+  $res=file_get_contents("../json/JXJKindx.json","r");
   $jxjs=json_decode($res,true);
   $ntotal=sizeof($jxjs);
   echo "<p style='display:none' id='nrels'>$ntotal</p>";
