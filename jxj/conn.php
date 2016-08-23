@@ -14,6 +14,7 @@ if(!$db_selected) {
   if(mysql_query($sql,$con)){
     echo "Database $dbname created successfully\n";
     $db_selected=mysql_select_db($dbname,$con);
+
 /////////////////// create table
 $sql = "CREATE TABLE IF NOT EXISTS admin (
 id        INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -61,12 +62,6 @@ ifactor  REAL NOT NULL)";
 
 $res = mysql_query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS jxjkind0 (
-id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-jxjname  VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-jxjid    VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL)";
-$res = mysql_query($sql);
-
 $sql = "CREATE TABLE IF NOT EXISTS jxjkinds (
 id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 jxjname  VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -89,6 +84,9 @@ cardid  VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 award   VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 ifactor   VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 )";	
+$res = mysql_query($sql);
+/////////////////// create table
+$sql = "insert into admin (username,password) values ('admin','21232f297a57a5a743894a0e4a801fc3')";
 $res = mysql_query($sql);
 /////////////////// create table
   }

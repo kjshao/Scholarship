@@ -35,7 +35,7 @@
     <div class="footer">
     <input type="submit" name="submit" value="登录" class="button" />
     <p class="register" data-toggle="modal" data-target="#register">注册</p>
-    <p class="contact">忘记密码?</p>
+    <p class="contact" data-container="body" data-toggle="popover" data-placement="top" data-content="联系管理员: 84379457">忘记密码?</p>
     </div>
   </form>
 </div>
@@ -58,6 +58,11 @@
 </div>
 </div> -->
 <?php include_once("regModal.php"); ?>
-<?php include_once("footer.php"); ?>
+<?php //include_once("footer.php"); ?>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
 </body>
 </html>

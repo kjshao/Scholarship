@@ -11,7 +11,7 @@ $(".dropjxj").click(function(){
   var i;
   btn = $(this);
   x = $(this).text();
-  n = x.split("、")[0];
+  n = x.split(".")[0];
   nactive = $("#nactive").text();
   for ( i=1; i<=nactive; i++ ) {
     if ( i == n ) {

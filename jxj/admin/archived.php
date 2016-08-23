@@ -17,35 +17,55 @@ if(!isset($_SESSION['admin'])){
   <script src="../jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/jxjstudents.js"></script>
+  <link rel="stylesheet" href="css/custom3.css">
 </head>
 <body>
+<div class='container-fluid' style='margin-top:10px'>
+ <table class='table table-bordered table-condensed table-hover'>
+ <thead>
+ <th style='background: #dcf0d6;' colspan=5><span class='rowTitle'>历年奖学金</span></th>
+ </thead>
 <?php
   include('../conn.php');
-  //$idcard = $_POST["idcard"];
-  //$award = $_POST["award"];
-  //$ifactor = $_POST["ifactor"];
 
   $sql = "SELECT DISTINCT award FROM archived";
   $res=mysql_query($sql);
   $n = 0;
+  $m = 0;
   while($row=mysql_fetch_row($res)){
     $n++;
+    $m++;
     $id1 = "a".$n;
     $id2 = "b".$n;
     $id3 = "c".$n;
-    echo "<div class='container-fluid' style='margin-top:10px'>
-         <table class='table table-bordered table-condensed table-hover'>";
+    if ( $m == 1 ) {
     echo "<tr>
           <td>
             <a id='{$id1}' class='award'>{$row[0]}</a>
             <form action='jxjstudents.php' method='POST' target='_blank' id='{$id3}'>
               <input type='hidden' name='award' id='{$id2}'/>
             </form>
+          </td>";
+    } else if ( $m < 5 ) {
+    echo " <td>
+            <a id='{$id1}' class='award'>{$row[0]}</a>
+            <form action='jxjstudents.php' method='POST' target='_blank' id='{$id3}'>
+              <input type='hidden' name='award' id='{$id2}'/>
+            </form>
+          </td>";
+    } else if ( $m == 5 ) {
+      $m = 0;
+    echo " <td>
+            <a id='{$id1}' class='award'>{$row[0]}</a>
+            <form action='jxjstudents.php' method='POST' target='_blank' id='{$id3}'>
+              <input type='hidden' name='award' id='{$id2}'/>
+            </form>
           </td>
           </tr>";
-    echo "</table></div>";
+    }
   }
-
+  echo "</tr>";
 ?>
+</table></div>
 </body>
 </html>

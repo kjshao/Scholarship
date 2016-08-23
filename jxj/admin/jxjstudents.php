@@ -23,21 +23,21 @@
   $ap = array(); // students
   echo "<div class='div2 container-fluid box-shadow'>";
   echo "<table class='table table-bordered table-striped table-condensed table-hover'>";
-  echo "<tr style='background: #dcf0d6;'>";
-  echo "<td colspan=11><span style='font-size: 20px;'>获奖名单：{$award}</span>";
-  echo "</tr>";
-      echo "<tr>";
-      echo "<td>编号</td>";
-      echo "<td>姓名</td>";
-      echo "<td>联系方式</td>";
-      echo "<td>组别</td>";
-      echo "<td>入学年份</td>";
-      echo "<td>攻读类别</td>";
-      echo "<td>专业</td>";
-      echo "<td>指导教师</td>";
-      echo "<td>文章总数</td>";
-      echo "<td>影响因子</td>";
-      echo "</tr>";
+  echo "<thead>";
+  echo "<th style='background: #dcf0d6;' colspan=11><span style='font-size: 20px;'>获奖名单：{$award}</span>";
+  echo "</th></thead>";
+  echo "<thead>";
+      echo "<th>编号</th>";
+      echo "<th>姓名</th>";
+      echo "<th>联系方式</th>";
+      echo "<th>组别</th>";
+      echo "<th>入学年份</th>";
+      echo "<th>攻读类别</th>";
+      echo "<th>专业</th>";
+      echo "<th>指导教师</th>";
+      echo "<th>文章总数</th>";
+      echo "<th>影响因子</th>";
+  echo "</thead>";
   while($row=mysql_fetch_row($res)){
     $np++;
     $ap[$np] = $row; //$ap[$np][0]: cardid; $ap[$np][1]: ifactor
@@ -50,12 +50,13 @@
     // name
     $id1 = $np;
     $idf1 = "a".$id1;
-    echo "<td> <a id='{$id1}' class='hrefx lip'>{$rowy[2]}</a>
-      <form action='details.php' method='POST' target='_blank' id='{$idf1}'>
-        <input type='hidden' name='award' value='{$award}'/>
-        <input type='hidden' name='cardid' value='{$ap[$np][0]}'/>
-      </form>
-    </td>";
+    echo "<td> {$rowy[2]} </td>";
+    //echo "<td> <a id='{$id1}' class='hrefx lip'>{$rowy[2]}</a>
+    //</td>";
+      //<form action='details.php' method='POST' target='_blank' id='{$idf1}'>
+      //  <input type='hidden' name='award' value='{$award}'/>
+      //  <input type='hidden' name='cardid' value='{$ap[$np][0]}'/>
+      //</form>
     // name
     echo "<td>{$rowy[3]}</td>"; // phone
     echo "<td>{$rowy[4]}</td>"; // telp used as group name

@@ -1,5 +1,6 @@
 body{
-  margin-top: 120px;
+  margin-top: 110px;
+  font-family:'lucida grande',tahoma,helvetica,arial,'bitstream vera sans',sans-serif;
 }
 
 .center {
@@ -7,21 +8,67 @@ body{
   margin-left: auto;
   margin-right: auto;
 }
+
 .navbar {
-   padding: 0px 0px 0px 0px;
-   margin: 0px 0px 50px 0px;
+   padding: 0px 50px 0px 20px;
    -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
    -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
    box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
 /* www.cssmatic.com/box-shadow */  
 }
 
+.navbar .glyphicon {
+    color: #0099ff;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(0, 204, 116, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 15px;
+    background-color: rgba(201, 207, 245, 1);
+    border-width: 0px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(1, 8, 33, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(66, 81, 166, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(66, 81, 166, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #4251a6;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #4251a6;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #4251a6;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #c9cff5;
+}
+
 .div1 {
   width: 96%;
   padding: 0px;
   border-radius: 5px;
-  border: 0px solid #000000;
+  border: 0px solid #008a65;
   z-index: 0;
+  -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+  -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+  box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
 }
 
 .tabCtrl {
@@ -58,28 +105,8 @@ body{
   margin: 0px;
 }
 
-.box-shadow {
-   -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-}
-
-.panel {
-  border: 1px solid #000000;
-}
-
 .btn:focus, .btn:active:focus, .btn.active:focus{
   outline: none;
-}
-
-footer .glyphicon {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #000d7d;
-}
-
-nav .glyphicon {
-    color: #0099ff;
 }
 
 #reg-table td{

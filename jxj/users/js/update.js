@@ -8,10 +8,8 @@ $("#btn_update").click(function(){
   ntr = $("#ntrs").text();
   tmp = $("#idselect").text();
   ids = tmp.split("|");
-  i = $("#btnJXJSel").text().split("、")[0];
-  j = parseFloat(i-1);
-  idjxj = $("#li"+j).text(); // id of scholarship
-  jxj = $("#btnJXJSel").text().split("、")[1]; // name of scholarship
+  idjxj = ids[0]; // id of award
+  jxj = $("#btnJXJSel").text(); // name of award
   flag = 0;
   ntotal = 0;
   for ( i=1; i<ids.length; i++ ) {
@@ -68,7 +66,7 @@ $("#btn_update").click(function(){
   }
   if ( flag == 1 ) { // have papar selected, add this award
     xpass.jxj = xpass.jxj + jxj + "|";
-    xpass.nif = xpass.nif + ntotal + "x" + totalif + "|";
+    xpass.nif = xpass.nif + ntotal + "x" + totalif + "x0" + "|";
   }
   $.post("namelist.php", xpass, function(){
     location.reload();

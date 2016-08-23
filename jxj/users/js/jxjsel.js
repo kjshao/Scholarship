@@ -25,115 +25,85 @@ $(".seljxj").click(function(){
   var i, j, k, id1, id2, idx, idy;
   var tmp, ntotal, ntr, x, n;
   var idjxj, nrel, flag, i1, j1, k1, nz;
-  var tmpx, flagx;
+  var tmpx, flagx, jxjname;
   var totalif, ifx, wtx;
   
 // clean up content in idselect
-  $("#idselect").html("0");
-// read in relationship of scholarship
-  nrel = $("#nrels").text();
-  var rels = new Array(nrel);
-  for ( i=0; i<nrel; i++ ){
-    n = $("#rel"+i).text();
-    rels[i] = new Array(n);
-    for ( j=1; j<=n; j++ ){
-      rels[i][j-1] = $("#relx"+i+"y"+j).text();
-    }
-  }
-
-// get the id of selected scholarship
-  tmp = $(this).text();
-  var jxjname = tmp.split("、")[1];
-  i = tmp.split("、")[0];
-  j = parseFloat(i-1);
-  idjxj = $("#li"+j).text(); // id of scholarship
-  $("#btnJXJSel").html(tmp);
-
-  //ntotal = $("#nlis").text();
-  //for ( i=1; i<=ntotal; i++ ) {
-  //  tmp = $("#li"+i).text();
-  //  alert(tmp);
-  //}
+// get the name of selected scholarship
+  tmp = $(this).text().split(".");
+  jxjkind = $("#li"+tmp[0]).html();
+  jxjname = tmp[1].replace(/^\s/, "");
+  $("#btnJXJSel").html(jxjname);
+  $("#idselect").html(jxjkind);
 
 // loop through journals
   totalif = 0;
   ntr = $("#ntrs").text();
   for ( j=1; j<=ntr; j++ ) {
-    tmp = $("#jstatus"+j).text();
-    x = tmp.split("|");
-    n = x.length;
-    tmp = $("#jstatusx"+j).text();
-    flag = 0;
-    flagx = 0;
-    for ( k=0; k<n; k++) {
-      id1 = tmp.split("|")[k];
-      id2 = id1.split(".");
-      // idx is the id of sholarship with the journal
-      idx = id2[0];
-      idy = id2[1];
-      if ( idy == "T" ) { flagx = 1; }
-      //alert(x[k]);
-      //alert(idx);
-      //alert(idy);
-      if ( x[k] == jxjname ) {
-        flag = 2;
-        break;
-      }
-
+    x = $("#jstatus"+j).text().split("|"); // jxjname included
+    y = $("#jstatusx"+j).text().split("|");
+    flag = 0; flagx = 0; flagy = 0;
+    var ix1, ix2;
+    ix1 = 0;
+    ix2 = 0;
+    for ( k=0; k<x.length; k++ ) {
+     if ( y[k] ) {
+      ix1 = parseFloat( ix1 ) + 1;
+      tmp = y[k].split(".");
+      if ( tmp[1] == "T" ) { flagx = 1; ix2 = parseFloat( ix2 ) + 1; } // archived
+      if ( x[k] == jxjname ) { flag = 2; break; }
       // if idx and idjxj not belong to the same set.
-      for ( i1=0; i1<nrel; i1++ ){
-        nz = rels[i1].length;
-        for ( j1=0; j1<nz; j1++ ) {
-          if ( idjxj == rels[i1][j1] ) {
-           for ( k1=0; k1<nz; k1++ ) {
-             if ( idx == rels[i1][k1] ) {
-               flag = 1;
-             }
-           }
-          }
-        }
+      if ( tmp[0] != 2 ) {
+        if ( tmp[0] == jxjkind ) { flag = 1; } // same set, not display
       }
-////////////////////////////
+     }
     }
+    if ( ix1 != ix2 ) { flagy = 1; } // contain flag except T, can not delete.
+////////////////////////////
     ifx = $("#if"+j).text();
     wtx = $("#w"+j).text();
+    ///////////////////////  if papaer has been archived, can not delete
     if ( flagx == 1 ) { // paper has been archived.
       $("#btn-delete"+j).attr('disabled','disabled');
-      $("#btn-edit"+j).attr('disabled','disabled');
+      $("#btn-edit"+j).attr('disabled',false);
     } else if ( flagx == 0 ) {
       $("#btn-delete"+j).prop('disabled',false);
       $("#btn-edit"+j).prop('disabled',false);
     }
-    if ( idjxj == "x" ) { // show all papers
+    if ( flagy == 1 ) { // paper has lable can not be deleted.
+      $("#btn-delete"+j).attr('disabled','disabled');
+    }
+    ///////////////////////  
+    if ( jxjkind == "x" ) { // list all papers
       totalif = parseFloat(totalif) + parseFloat(ifx*wtx);
       $("#btn_update").hide();
       $("#tr"+j).show();
       $("#btnSel"+j).hide();
       $("#btnCheck"+j).prop("checked",false);
-    }else if ( idjxj != "x" ) {
+    }else if ( jxjkind != "x" ) {  // list paper by award
       $("#btn_update").show();
-    if ( flag == 0 ) {
-      $("#tr"+j).show();
-      $("#btnSel"+j).show();
-      $("#btnCheck"+j).attr('disabled','disabled');;
-      $("#btnCheck"+j).prop("checked",false);
-      tmpx = $("#idselect").text();
-      tmpx = tmpx + "|" + j;
-      $("#idselect").html(tmpx);
-    }else if ( flag == 1 ) {
-      $("#tr"+j).hide();
-      $("#btnSel"+j).hide();
-      $("#btnCheck"+j).prop("checked",false);
-    }else if ( flag == 2 ) {
-      $("#tr"+j).show();
-      $("#btnSel"+j).show();
-      $("#btnCheck"+j).attr('disabled','disabled');;
-      $("#btnCheck"+j).prop("checked",true);
-      totalif = parseFloat(totalif) + parseFloat(ifx*wtx);
-      tmpx = $("#idselect").text();
-      tmpx = tmpx + "|" + j;
-      $("#idselect").html(tmpx);
-    }
+      if ( flag == 0 ) { // not the same set, and paper has not include this award
+        $("#tr"+j).show();
+        $("#btnSel"+j).show();
+        $("#btnCheck"+j).attr('disabled','disabled');
+        $("#btnCheck"+j).prop("checked",false);
+        tmpx = $("#idselect").text();
+        tmpx = tmpx + "|" + j;
+        $("#idselect").html(tmpx);
+      }else if ( flag == 1 ) { // in the same set, not this award
+        $("#tr"+j).hide();
+        $("#btnSel"+j).hide();
+        $("#btnCheck"+j).prop("checked",false);
+      }else if ( flag == 2 ) { // paper include this award
+        $("#tr"+j).show();
+        $("#btnSel"+j).show();
+        $("#btnCheck"+j).attr('disabled','disabled');
+        $("#btnCheck"+j).prop("checked",true);
+        totalif = parseFloat(totalif) + parseFloat(ifx*wtx);
+        tmpx = $("#idselect").text();
+        tmpx = tmpx + "|" + j;
+        $("#idselect").html(tmpx);
+      }
     }
   }
 // loop through journals

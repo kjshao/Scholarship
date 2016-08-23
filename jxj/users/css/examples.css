@@ -1,7 +1,8 @@
 .tt-menu {
   width: 568px;
-  margin: 12px 0px;
-  padding: 8px 8px;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);

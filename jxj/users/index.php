@@ -18,8 +18,8 @@
   <script src="js/typeahead.bundle.min.js"></script>
   <script src="js/the-basics.js"></script>
   <script src="js/delete.js"></script>
-  <script src="js/edit.js"></script>
-  <script src="js/add.js"></script>
+  <script src="js/editPaper.js"></script>
+  <script src="js/addPaper.js"></script>
   <script src="js/jxjsel.js"></script>
   <script src="js/update.js"></script>
   <script src="js/upinfo.js"></script>
@@ -33,13 +33,11 @@
 </head>
 <body>
 <!-- navbar -->
-<nav class="navbar navbar-default navbar-fixed-top"> <?php include_once('nav.php'); ?> </nav>
+<?php include_once('nav.php'); ?>
 <?php include_once('info.php');// informations for AJAX ?> 
 <!-- table -->
-<!--<div class="container-fluid">
-<div class="panel panel-default box-shadow panel1" style="margin-top: 3px;">
-<div class="table-responsive">-->
-<div class="div1 container-fluid box-shadow">
+<!-- <div class="div1 container-fluid box-shadow"> -->
+<div class="div1 container-fluid">
  <table id="main_table" class='table table-bordered table-striped table-condensed table-hover'>
    <thead> <?php include_once('tableControl.php'); ?> </thead>
    <thead> <?php include_once('tableHead.php'); ?> </thead>
@@ -51,7 +49,12 @@
   include_once('delete_confirm.php');
   include_once('addPaperModal.php');
   include_once('upinfoModal.php');
-  include_once("../footer.php");
+  //include_once("../footer.php");
 ?>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 </body>
 </html>

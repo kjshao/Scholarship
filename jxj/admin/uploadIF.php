@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(!isset($_SESSION['admin'])){
-	header('Content-Type:text/html; charset=utf-8');
-	echo "错误!没有权限!";
-	exit(0);
+  header('Content-Type:text/html; charset=utf-8');
+  echo "错误!没有权限!";
+  exit(0);
 }
 include("../conn.php");
 
@@ -23,7 +23,7 @@ $sheet    = $PHPExcel->getSheet(0);
 $highestRow    = $sheet->getHighestRow(); 
 $highestColumm = $sheet->getHighestColumn();
 
-$sql = "DELETE FROM impact";
+$sql = "DELETE * FROM impact";
 $res=mysql_query($sql);
 
 for ($i = 1; $i <= $highestRow; $i++){
@@ -31,7 +31,7 @@ for ($i = 1; $i <= $highestRow; $i++){
   $ifactor = $sheet->getCell('B'.$i)->getValue(); 
 
   if(!is_numeric($ifactor)){
-	$ifactor = 0.0;
+  $ifactor = 0.0;
   }
 
   $sql = "INSERT INTO impact (journal,ifactor) VALUES ('$journal','$ifactor')";

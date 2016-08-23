@@ -50,10 +50,6 @@ if($_POST["submit"]=="Add Journal")
   }
   $sql = "INSERT INTO journals (idcard,journal,title,doi,ifactor,nauthors,seq,coaffi,coauthor,weight,award,status) VALUES ('$idcard','$journal','$title','$doi','$ifactor','$nauthors','$seq','$coaffi','$coauthor','$weight','$award','$status')";
   $result=mysql_query($sql,$con);
-  $sql = "SET @count=0";
-  $result=mysql_query($sql,$con);
-  $sql = "UPDATE  SET $journals.id=@count:=@count+1";
-  $result=mysql_query($sql,$con);
 }
 
 if($_POST["submit"]=="Edit Journal"){

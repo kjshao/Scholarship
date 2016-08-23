@@ -16,10 +16,9 @@
   <script src="../jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/addJXJ.js"></script>
-  <script src="js/addJXJKind.js"></script>
+  <script src="js/delJXJ.js"></script>
   <script src="js/addIF.js"></script>
   <script src="js/upJXJStatus.js"></script>
-  <script src="js/upJXJRel.js"></script>
   <script src="js/jxjOC.js"></script>
   <script src="js/archive.js"></script>
   <script src="js/dropdown.js"></script>
@@ -35,15 +34,6 @@
 
 <?php
   include "../conn.php";
-  $sql = "SELECT * FROM jxjkind0";
-  $res=mysql_query($sql);
-  $jkinds=array();
-  while($row=mysql_fetch_assoc($res)){
-    $id = $row["id"]-1;
-    $name = $row["jxjname"];
-    $jkinds[$id] = $name;
-  }
-
   $sql = "SELECT * FROM jxjkinds";
   $res = mysql_query($sql);
   $sql = "SELECT * FROM students";
@@ -74,14 +64,14 @@
       $ids = "s".$nactive; // id of award
       $idb = "b".$nactive; // id of buttun for archive
       $ido = "o".$row[0];
-      echo "<p id='$idx' style='display:none'>{$nactive}、{$row[1]}</p>";
+      echo "<p id='$idx' style='display:none'>{$nactive}. {$row[1]}</p>";
       if ( $nactive == 1 ) {
         echo "<table id='{$idt}' class='table table-bordered table-striped table-condensed table-hover'>";
       } else {
         echo "<table id='{$idt}' style='display:none' class='table table-bordered table-striped table-condensed table-hover'>";
       }
-      echo "<tr style='background: #dcf0d6;'>";
-      echo "<td colspan=11><span id='$ids' class='rowTitle'>{$row[1]}</span>";
+      echo "<thead>";
+      echo "<th style='background: #dcf0d6;' colspan=12><span id='$ids' class='rowTitle'>{$row[1]}</span>";
       echo "<div class='btn-group' style='float:left'>";
       echo "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><span id='btnJXJDown'>奖学金</span><span>&nbsp;&nbsp;</span><span class='caret'></span></button>";
       echo "<ul class='dropdown-menu jxjDown'></ul>";
@@ -90,24 +80,25 @@
       echo "<div class='btn-group' style='float:right'>";
       echo "<button id='{$idb}' type='button' class='btn btn-default btn-small btn-archive'>入档</button>";
       if ( $row[3] == 0 ) {
-        echo "<button id='{$ido}' type='button' class='btn btn-success btn-small btn-oc'>关闭</button></td></div>";
+        echo "<button id='{$ido}' type='button' class='btn btn-success btn-small btn-oc'>关闭</button></th></div>";
       } else if ( $row[3] == 1 ) {
-        echo "<button id='{$ido}' type='button' class='btn btn-warning btn-small btn-oc'>开启</button></td></div>";
+        echo "<button id='{$ido}' type='button' class='btn btn-warning btn-small btn-oc'>开启</button></th></div>";
       }
-      echo "</tr>";
-      echo "<tr>";
-      echo "<td>编号</td>";
-      echo "<td>选择</td>";
-      echo "<td>姓名</td>";
-      echo "<td>联系方式</td>";
-      echo "<td>组别</td>";
-      echo "<td>入学年份</td>";
-      echo "<td>攻读类别</td>";
-      echo "<td>专业</td>";
-      echo "<td>指导教师</td>";
-      echo "<td>文章总数</td>";
-      echo "<td>影响因子</td>";
-      echo "</tr>";
+      echo "</thead>";
+      echo "<thead>";
+      echo "<th>编号</th>";
+      echo "<th>入档</th>";
+      echo "<th>姓名</th>";
+      echo "<th>联系方式</th>";
+      echo "<th>组别</th>";
+      echo "<th>入学年份</th>";
+      echo "<th>攻读类别</th>";
+      echo "<th>专业</th>";
+      echo "<th>指导教师</th>";
+      echo "<th>文章总数</th>";
+      echo "<th>影响因子</th>";
+      echo "<th>状态</th>";
+      echo "</thead>";
       $nl = 0;
       for ( $j=1; $j<=$np; $j++ ) {
         $jxjs = explode("|",$ap[$j][2]);
@@ -145,6 +136,11 @@
             $nifx = explode("x",$nif[$i]);
             echo "<td id='{$idnp}'>{$nifx[0]}</td>"; // number of papers
             echo "<td id='{$idif}'>{$nifx[1]}</td>"; // total if
+            if ( $nifx[2] == 0 ) {
+              echo "<td style='color:red'>待审核</td>"; // total if
+            } else if ( $nifx[2] == 1 ) {
+              echo "<td style='color:green'>已审核</td>"; // total if
+            }
             echo "</tr>";
             echo "<p id='$idy' style='display:none'>{$ap[$j][1]}</p>"; // cardid
           }
@@ -154,32 +150,16 @@
       echo "<p id='$idy' style='display:none'>{$nl}</p>";
       echo "</table>";
     }elseif($row[4]==1){ // 历年奖学金
-      //$statx = "已入档";
-      //echo "<p>序号：$ntotal 名称：{$row[1]} 类别：{$jkinds[$id]} 状态：$stat $statx</p>";
-      //echo "<p>获奖名单：</p>";
-      //for ( $j=1; $j<=$np; $j++ ) {
-      //  $jxjs = explode("|",$ap[$j][2]);
-      //  $n = count($jxjs) - 1;
-      //  for ( $i=0; $i<$n; $i++ ) {
-      //    if( $jxjs[$i] == $row[1] ) {
-      //      $sql = "SELECT * FROM users WHERE cardid='".mysql_real_escape_string($ap[$j][1])."'";
-      //      $resy = mysql_query($sql);
-      //      $rowy=mysql_fetch_row($resy);
-      //      echo "<p>姓名：{$rowy[2]}；身份证号：{$ap[$j][1]}</p>";
-      //    }
-      //  }
-      //}
-      //echo "<hr>";
     }
   }
   echo "</div>";
   echo "<p id='nactive' style='display:none'>{$nactive}</p>";
 ?>
 
-<?php include_once('addJXJKindModal.php'); ?>
-<?php include_once('upJXJRelModal.php'); ?>
 <?php include_once('addJXJModal.php'); ?>
+<?php include_once('delJXJModal.php'); ?>
 <?php include_once('addIFModal.php'); ?>
+<?php include_once('archiveModal.php'); ?>
 <?php include_once('upJXJStatusModal.php'); ?>
 </body>
 </html>

@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td><span class="red"></span>攻读方式</td>
-              <td><input class="form-control" id="reg-readway-mdl" placeholder="硕博/直博"></td>
+              <td><input class="form-control" id="reg-readway-mdl" placeholder="硕博/直博/统招博士/联合培养"></td>
             </tr>
             <tr>
               <td><span class="red"></span>指导教师</td>

@@ -93,7 +93,7 @@ $(document).ready(function($){
 
     pass.submit = $("#submit").val();
 
-    action = "journal_add.php";
+    action = "addPaper.php";
     $.post(action, pass, function(data){
       if(data == -1){
         alert('DOI为\''+pass.doi+'\'的文章重复，请检查。')

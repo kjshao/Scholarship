@@ -1,5 +1,5 @@
 body{
-  margin-top: 120px;
+  margin-top: 40px;
   font-family:'lucida grande',tahoma,helvetica,arial,'bitstream vera sans',sans-serif;
 }
 
@@ -8,27 +8,6 @@ body{
   margin-left: auto;
   margin-right: auto;
 }
-.navbar {
-   padding: 0px 0px 0px 0px;
-   margin: 0px 0px 0px 0px;
-   -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-/* www.cssmatic.com/box-shadow */  
-}
-
-.div1 {
-  width: 96%;
-  padding: 0px;
-  border-radius: 5px;
-  border: 0px solid #000000;
-  z-index: 0;
-}
-
-.tabCtrl {
-   float: left;   
-}
-
 .table td {
    text-align: center;   
    vertical-align: middle;
@@ -59,27 +38,39 @@ body{
   margin: 0px;
 }
 
-.box-shadow {
-   -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-   box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
-}
-
 .btn:focus, .btn:active:focus, .btn.active:focus{
   outline: none;
 }
 
 .rowTitle {
-  position: relative;
-  top: 5px;
   font-size: 20px;
+}
+
+.jxjTitle {
+  font-size: 18px;
+  color: blue;
 }
 
 .lip {
   cursor: pointer;
 }
 
+.award {
+  cursor: pointer;
+}
+
 .lip:hover {
   color: blue;
   text-decoration: underline;
+}
+
+.sd1 {
+  width: 93%;
+  padding: 0px;
+  border-radius: 5px;
+  border: 0px solid #008a65;
+  z-index: 0;
+  -webkit-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+  -moz-box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
+  box-shadow: 10px 10px 22px -7px rgba(0,0,0,0.8);
 }

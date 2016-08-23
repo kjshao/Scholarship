@@ -13,15 +13,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom3.css">
   <script src="../jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="js/jxjwait.js"></script>
+  <script src="js/myjxj.js"></script>
 </head>
 <body>
-<div class="container-fluid" style="margin-top:10px">
+<div class="container-fluid sd1" style="margin-top:10px">
  <table class='table table-bordered table-condensed table-hover'>
-   <tbody id='mtb'>
+   <thead>
+   <th colspan=9 class='rowTitle' style="background: #dcf0d6;">我的奖学金</th>
+   </thead>
+   <thead>
    <th>编号</th> <th>刊物</th> <th>标题</th> <th>DOI</th> <th>作者</th> <th>第一单位</th> <th>共同一作</th> <th>权重</th> <th>影响因子</th>
+   </thead>
+   <tbody id='mtb'>
    </tbody>
  </table>
 </div>
@@ -44,7 +50,7 @@
      $flag = 0;
      $tmp = array();
      for ( $i=0; $i<$n; $i++ ) {
-       if ( strpos($y[$i], 'T') !== false ) { // flag is F
+       if ( strpos($y[$i], 'T') != false ) { // flag is T
          $flag++;
          $tmp[$flag] = $x[$i];
        }
