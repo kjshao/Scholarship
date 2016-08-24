@@ -41,7 +41,8 @@ function IdentityCodeValid(code) {
             }
             var last = parity[sum % 11];
             if ( code[17] == 'x' ) {
-              var tmpx = 'X'
+              var tmpx = 'X';
+              code[17] = 'X'; 
             } else {
               var tmpx = code[17];
             }
@@ -65,7 +66,7 @@ function regid(idp){
 
 $('#register').find('.modal-footer #confirm').on('click', function(){
   pass = {};
-  str = '不能为空!';
+  str = '不能为空！';
   function blkErr(opt){
     alert(opt + str);
   }
@@ -108,12 +109,24 @@ $('#register').find('.modal-footer #confirm').on('click', function(){
   if(blkchk('readway',    '攻读方式')) return;
   if(blkchk('teacher',    '指导教师')) return;
   if(blkchk('year',       '入学年份')) return;
+  else{
+    var reg = /(19|20)[0-9][0-9]/;
+    if(!reg.exec(pass.year)){
+      alert('入学年份请输入1900-2099之间的整数!');
+      return;
+    }
+  }
   if(blkchk('password',   '登录密码')) return;
   if(blkchk('pwd-confirm','密码确认')) return;
 
+  if(pass.cardid.substr(-1) == 'x'){
+    pass.cardid = pass.cardid.substr(0, 17) + 'X';
+  }
+  pass.cardid = md5(pass.cardid);
+
   $.post("register.php", pass, function(data, status){
     if(data == -1){
-      alert('该用户已存在(' + pass.cardid + ')!');
+      alert('该用户已存在！');
       return;
     }else{
       alert('注册成功！请登录。')
@@ -126,7 +139,7 @@ $(regid('pwd-confirm')).focus(function(){
   id = regid('password');
   password = $(id).val();
   if(blank(password)){
-    alert('请先输入登录密码!');
+    alert('请先输入登录密码！');
         $(id).focus();
     }
 });
@@ -137,7 +150,17 @@ $(regid('pwd-confirm')).blur(function(){
     pwd_confirm = $(this).val();
 
   if(password != pwd_confirm){
-    alert('两次密码不一致，请重新输入!');
+    alert('两次密码不一致，请重新输入！');
+    }
+});
+
+$(regid('year')).blur(function(){
+  id = regid('year');
+  cardid = $(id).val();
+    var reg = /(19|20)[0-9][0-9]/;
+    if(!reg.exec(cardid)){
+      alert('入学年份请输入1900-2099之间的整数！');
+      return;
     }
 });
 });

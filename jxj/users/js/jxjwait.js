@@ -82,11 +82,11 @@ for ( ijxj=0; ijxj<njxj; ijxj++ ) {
         flag = 1;
         k++;
         if ( namex[i][j] == 'F') {
-          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:red'>待审核</span>";
+          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:red'>待审核（点击修改）</span>";
         } else if ( namex[i][j] == 'W' ) {
-          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:orange'>待修改</span>";
+          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:orange'>待修改（点击修改）</span>";
         } else if ( namex[i][j] == 'R' ) {
-          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:blue'>已修改</span>";
+          tmpstr = "<span id='"+i+"|"+jxj[ijxj]+"' class='jxjmodify' style='color:blue'>已修改（点击修改）</span>";
         } else if ( namex[i][j] == 'P' ) {
           tmpstr = "<span style='color:green'>已审核</span>";
         }

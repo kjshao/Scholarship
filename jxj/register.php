@@ -24,6 +24,8 @@ VALUES ('${cardid}', '${name}', '${phone}', '${telp}', '${email}', '${major}', '
   }else{
     $ret = -1;
   }
-}else
+  echo $ret;
+}else{
   echo "没有权限！";
+}
 ?>

@@ -60,7 +60,8 @@
        if ( strpos($y[$i], 'T') == false ) { // flag != T
          $flag++;
          $tmp[$flag] = $x[$i];
-         $tmpx[$flag] = explode(".",$y[$i])[1];
+         $tmpx0 = explode(".",$y[$i]);
+         $tmpx[$flag] = $tmpx0[1];
        }
      }
      if ( $flag > 0 ) {

@@ -30,7 +30,8 @@
     for ( $i=0; $i<$n; $i++ ) {
       if ( $jxjs[$i] == $award ) {
         if ( $choice == 'true' ) { // 若没有获得该奖学金，去掉该奖学金选项
-          $x = explode(".",$stat[$i])[0];
+          $x00 = explode(".",$stat[$i]);
+          $x = $x00[0];
           $statx = $statx.$x.".T|";
           $awardx = $awardx.$jxjs[$i]."|";
         }

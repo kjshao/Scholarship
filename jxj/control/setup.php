@@ -1,6 +1,6 @@
 <?php
 $dbname="jxj";
-$con = mysql_connect("localhost","root","admin123");
+$con = mysql_connect("localhost","gsc","gsc1234");
 mysql_query("set names 'UTF8'");
 mysql_query("set character 'UTF8'");
 
@@ -9,19 +9,21 @@ if(!$con) {
 }
 
 $db_selected = mysql_select_db($dbname, $con);
-if(!$db_selected) {
-  $sql="CREATE DATABASE $dbname";
-  if(mysql_query($sql,$con)){
-    echo "Database $dbname created successfully\n";
-    $db_selected=mysql_select_db($dbname,$con);
 
-/////////////////// create table
-$sql = "CREATE TABLE IF NOT EXISTS admin (
-id        INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-username  VARCHAR(255) NOT NULL,
-password  VARCHAR(255) NOT NULL)";	
-
+$sql = "DROP TABLE users";
 $res = mysql_query($sql);
+$sql = "DROP TABLE journals";
+$res = mysql_query($sql);
+$sql = "DROP TABLE students";
+$res = mysql_query($sql);
+$sql = "DROP TABLE archived";
+$res = mysql_query($sql);
+$sql = "DROP TABLE impact";
+$res = mysql_query($sql);
+$sql = "DROP TABLE jxjkinds";
+$res = mysql_query($sql);
+
+
 
 $sql = "CREATE TABLE IF NOT EXISTS users (
 id        INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -55,21 +57,6 @@ $sql = "CREATE TABLE IF NOT EXISTS journals (
 )";
 $res = mysql_query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS impact (
-id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-journal  VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-ifactor  REAL NOT NULL)";	
-
-$res = mysql_query($sql);
-
-$sql = "CREATE TABLE IF NOT EXISTS jxjkinds (
-id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-jxjname  VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-jxjid    INT(4) NOT NULL,
-status   TINYINT(1) NOT NULL,
-statusx  TINYINT(1) NOT NULL)";
-$res = mysql_query($sql);
-
 $sql = "CREATE TABLE IF NOT EXISTS students (
 id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 idcard VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -85,10 +72,22 @@ award   VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 ifactor   VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 )";	
 $res = mysql_query($sql);
-/////////////////// create table
-$sql = "insert into admin (username,password) values ('admin','21232f297a57a5a743894a0e4a801fc3')";
+
+
+$sql = "CREATE TABLE IF NOT EXISTS impact (
+id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+journal  VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+ifactor  REAL NOT NULL)";	
 $res = mysql_query($sql);
-/////////////////// create table
-  }
-}
+
+$sql = "CREATE TABLE IF NOT EXISTS jxjkinds (
+id       INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+jxjname  VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+jxjid    INT(4) NOT NULL,
+status   TINYINT(1) NOT NULL,
+statusx  TINYINT(1) NOT NULL)";
+$res = mysql_query($sql);
+
+echo "done!";
+
 ?>

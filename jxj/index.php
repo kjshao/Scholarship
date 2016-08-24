@@ -39,24 +39,6 @@
     </div>
   </form>
 </div>
-
-<!--<div class="gradient"></div>-->
-
-<!-- footer
-<div class="row">
-  <div class="col-sm-1 text-center">
-  </div>
-  <div class="col-sm-10 text-center">
-  <hr>
-  </div>
-  <div class="col-sm-1 text-center">
-  </div>
-</div>
-<div class="row">
-<div class="col-sm-12 text-center">
- <img src='pics/dicp.svg' height='70'>
-</div>
-</div> -->
 <?php include_once("regModal.php"); ?>
 <?php //include_once("footer.php"); ?>
 <script>

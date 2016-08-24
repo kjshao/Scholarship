@@ -20,11 +20,16 @@
       $_SESSION['admin']  = "admin";
       header("Location: admin/index.php");
     }else{
-      echo "错误! 用户:'${cardid}' 密码错误！";
+      echo "账户密码错误！";
       exit();
     }
   }else{
+    if(substr($cardid, -1) == 'x'){
+      $cardid = substr($cardid, 0, 17) . 'X';
+    }
+    
     if(checkIdCard($cardid)){
+      $cardid = md5($cardid);
       $sql = "SELECT * FROM users WHERE cardid='${cardid}'"; 
       $res = mysql_query($sql);
           if($row = mysql_fetch_row($res)){
@@ -35,14 +40,14 @@
               $_SESSION['normal'] = "normal";
               header("Location: users/index.php");
           }else{
-               echo "错误! 用户: '${cardid}' 密码错误！";
+               echo "账户密码错误！";
                exit();
           }
           }
-      echo "错误! 用户:'${cardid}' 不存在。";
+      echo "账户不存在！";
       exit();
       }else{
-      echo "错误! 身份证号:'${cardid}' 不是有效身份证号。";
+      echo "错误：不是有效身份证号！";
       exit();
     }
     } 

@@ -11,6 +11,12 @@
             期刊请输入期刊名，并在下拉菜单中选择，不包含在下拉菜单的期刊影响因子将设为 0；
             专利请填写 “发明专利”、“实用专利”、“PCT 专利” 或 “其他专利”。
           </li>
+          <li class="list-group-item">2、<kbd style="background-color: #9383b5">文章/专利 标题</kbd>
+            填写具体文章或专利的标题。
+          </li>
+          <li class="list-group-item">3、<kbd style="background-color: #9383b5">DOI/专利号</kbd>
+            填写正确的 DOI 号或专利号，将用于奖学金的审核。
+          </li>
         </ul>
 	  <div id="paper-id"></div>
           <div class="form-group" id="prefetch">
@@ -22,7 +28,7 @@
             <input type="text" class="form-control" id="title" name="title" placeholder="">
           </div>
           <div class="form-group">
-            <label>DOI：</label>
+            <label>DOI/专利号：</label>
             <input type="text" class="form-control" id="doi" name="doi" placeholder="文章 DOI 号">
           </div>
           <div class="form-group">

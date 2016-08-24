@@ -35,6 +35,7 @@
 <!-- navbar -->
 <?php include_once('nav.php'); ?>
 <?php include_once('info.php');// informations for AJAX ?> 
+<?php include_once('intro.php'); ?>
 <!-- table -->
 <!-- <div class="div1 container-fluid box-shadow"> -->
 <div class="div1 container-fluid">
